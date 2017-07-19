@@ -1,0 +1,12 @@
+# Final Words
+
+### R implementation
+
+http://bcn2016.europeanbioanalysisforum.eu/wp-content/uploads/2016/12/D2J4-4-Viswanath-Devanarayan_Abbvie.pdf
+
+Programmer note: the above code produces results as desired only if
+the input data set has the same structure as the data set created by
+the following code. If not, please sort the test data by time treat
+and response as this one.
+
+The analysis uses 3 data sets in csv format, that are SIMULATED, assuming lognormal distributions. The values in, and structures of the data as well as any potential conclusions or parameter estimates do not correspond to any real experiment. The purpose of the data sets is merely to illustrate possible (or inadequate) data structures and possible application of the various user interfaces and applications for assessing ADA.

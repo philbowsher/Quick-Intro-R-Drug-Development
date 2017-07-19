@@ -1,0 +1,22 @@
+# Methods
+
+## Background
+
+ADA	Positive	Sample: when	ADA	is	detected	in	a	sample,	the	sample	is	considered positive.
+
+Therapeutic proteins (sometimes also called biologics, biopharmaceuticals, biological products, or biological medicinal products) and peptides have the potential to induce immunogenicity. The consequences of product immunogenicity vary from no evidience of clinical effect to severe, life-threatening responses.
+
+Anti-drug antibodies (ADA) have been implicated in infusion reactions and anaphylaxis as well as immune complex-mediated disease. ADA have also caused secondary treatment failures (loss of efficacy) and, in rare occasions, more serious thrombocytopenia and pure red cell aplasia. Therefore, ADA are a medical concern in terms of safety and long-term efficacy of the drug and it is critical to evaluate their development in all patients during clinical studies, not just in a symptom-driven manner. With a goal of guiding medical practice, the elucidation of ADA responses and their characteristics relative to clinical consequences is vital [@shankar2014assessment].
+
+ADA comprises neutralizing and non-neutralizing ADA. Other terms that have been used for ADA include anti-therapeutic antibody (ATA), anti-product antibody (APA), or anti-biologic antibody (ABA).
+
++ Neutralizing ADA (NAb): ADA that inhibits or reduces the pharmacological activity of the biologic drug molecule, as determined by an *in vitro* test or animal-based bioassay method, regardless of its *in vitro* clinical relavence (i.e., whether or not test method results relate to clinical impact in the subject).
+
++ Non-neutralizing ADA (non-neutralizing antibody, non-
+NAb): ADA that binds to the biologic drug molecule but
+does not inhibit its pharmacological activity in an in vitro
+test or animal-based bioassay method, regardless of its in
+vivo clinical relevance (i.e., whether or not test method
+results relate to clinical impact in the subject).
+
+ADA three‐tiered testing strategy is deployed here to assess ADA.

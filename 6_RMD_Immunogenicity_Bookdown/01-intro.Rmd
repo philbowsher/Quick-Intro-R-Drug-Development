@@ -1,0 +1,44 @@
+# Introduction {#intro}
+
+Therapeutic proteins have the potential to elicit an immune response
+when administered to patients. An important aspect of developing
+these medicines is to understand the immunogenicity and to be able
+to communicate this information to patients, prescribers, and
+regulators.
+
+## Study Information
+
+  * Client name: XYZ biologics, LLC (Formerly known as ABC Proteins, LLC)
+  * XYZ Study No. CA123456
+
+**_ In the experiment, subjects will undergo the following steps (in order): _**
+
+ADA Three‐tiered Testing Strategy
+
+http://www.e-i-p.eu/wp-content/uploads/2014/03/Viswanath-Devanarayan-EIP-symposium-Lisbon-2014-24FEB2014.pdf
+
+  * **_ADA screening test_**. If the screening result is *NEGATIVE*, then the result will be recoreded  *NEGATIVE*, otherwise screening *POSITIVE* and continue
+  * **_ADA confirmatory test_**. If the result is *NEGATIVE*, then the subject will have a confirmatory *NEGATIVE* result, otherwise a *POSITIVE* result with a "titer" value recorded and continue 
+  * **_Titer_**. If the result is *POSITIVE*, with a "titer" value recorded and continue and there will be no more test. 
+
+The cut-off values to determine whether a subject has *POSITIVE* or *NEGATIVE* ADA result are the screening cutpoint and confirmatory cutpoint. Please see here for more information:
+
+Recommendations for the validation of immunoassays used for detection of host antibodies against biotechnology products.
+
+https://www.ncbi.nlm.nih.gov/pubmed/18993008
+
+Other documents include:
+
+The quintessence of immunogenicity reporting for biotherapeutics
+
+http://www.nature.com/nbt/journal/v33/n4/full/nbt.3181.html?message-global=remove
+
+Assay Development and Validation for Immunogenicity Testing of Therapeutic Protein Products
+
+https://www.fda.gov/downloads/Drugs/Guidances/UCM192750.pdf
+
+Assessment and Reporting of the Clinical Immunogenicity of Therapeutic Proteins and Peptides – Harmonized Terminology and Tactical Recommendation
+
+https://www.ncbi.nlm.nih.gov/pubmed/24764037
+
+This is book written in R with the **bookdown** package [@R-bookdown] in this document, which was built on top of R Markdown and **knitr** [@xie2015].

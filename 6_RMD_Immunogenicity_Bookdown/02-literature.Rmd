@@ -1,0 +1,30 @@
+# Literature
+
+## Case Study
+
+The goal of this study is to compare immunogenicity of humgensity12345 (new drug) after multiple subcutaneous (SC) administrations in healthy subjects.  ADA levels for humgensity12345 were estimated to evaluate potential difference between the two products in the incidence of human immune responses.
+
+This is a one center, single-blind, randomized, parallel, multiple-dose, safety and immunogenicity study. A total number of one hundred sixty five (164) healthy adult male and female subjects will be enrolled and randomized to 1 of 2 treatments (82 subjects per treatment). 
+
+Use Mean + 1.645 x SD with caution
+Only for normally independently distributed data without outliers
+Usually requires at least a transformation like logs
+
+Nonparametric often easier
+Simply use 95th percentile
+Caution if unbalanced design
+
+Titer Definition
+
+Smallest distinct dilution in a titration series with a negative response
+Response is Sample ECL mean / Diluent Control ECL mean
+
+## Statistical Analysis
+
+Anti-drug antibody (ADA): Biologic drug-reactive antibody, including pre-existing host antibodies that are cross-reactive with the administered biologic drug (baseline ADA). 
+
+http://www.e-i-p.eu/wp-content/uploads/2013/01/Devanarayan_EIP_Leiden_2009.pdf
+
+Cut points in immunogenicity assays are used to classify future specimens into anti-drug antibody (ADA) positive or negative. Five phenomena may complicate the statistical cut point estimation and are further explained here:
+
+https://www.ncbi.nlm.nih.gov/pubmed/25733352

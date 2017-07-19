@@ -1,0 +1,32 @@
+---
+title: "crosstalk_toothgrowth"
+author: "Phil Bowsher"
+date: "5/12/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+
+library(d3scatter)
+library(crosstalk)
+
+shared_ToothGrowth <- SharedData$new(ToothGrowth)
+bscols(widths = c(3,NA,NA),
+  list(
+    filter_checkbox("supp", "supp", shared_ToothGrowth, ~supp, inline = TRUE),
+    filter_slider("dose", "dose", shared_ToothGrowth, ~dose, width = "100%")
+  ),
+  d3scatter(shared_ToothGrowth, ~dose, ~len, ~factor(supp), width="100%", height=250),
+  d3scatter(shared_ToothGrowth, ~len, ~dose, ~factor(supp), width="100%", height=250)
+)
+```

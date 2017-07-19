@@ -1,0 +1,69 @@
+---
+title: "ToothGrowth Analysis No Shiny"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(datasets)
+library(ggplot2)
+```
+
+ToothGrowth Analysis
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+
+### Chart A
+
+```{r}
+ggplot(aes(x = supp, y = len), data = ToothGrowth) + 
+        geom_boxplot(aes(fill = supp))
+
+```
+
+### Chart B
+
+```{r}
+#summary(ToothGrowth)
+
+ggplot(ToothGrowth, aes(x=factor(dose),y=len,fill=factor(dose))) +
+        geom_boxplot(notch=F) + facet_grid(.~supp) + 
+     scale_x_discrete("Dose") + 
+     scale_y_continuous("Length of Growth") + 
+        scale_fill_brewer(name="Dose", palette = "Set2") +
+     ggtitle("Analysis of Tooth Growth - Dose vs Supp")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Chart C
+
+```{r}
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+        geom_boxplot(aes(fill = supp)) + facet_wrap(~dose) + theme_bw()
+
+```
+
+### Char D
+
+```{r}
+growth <- ToothGrowth$len
+hist(growth, prob = TRUE, col = "navajowhite3", border = "black", xlab = "")
+abline(v = mean(growth), col = "green", lwd = 2)
+lines(density(growth), col="blue", lwd=2)
+
+#qqnorm(growth);qqline(growth)
+#original_par <-par()
+#par(original_par)
+
+```
+
+
+

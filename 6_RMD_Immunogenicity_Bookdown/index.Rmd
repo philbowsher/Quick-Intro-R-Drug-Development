@@ -1,0 +1,33 @@
+--- 
+title: "Immunogenicity - Tiered Approach to Assess ADA	Positive Samples"
+author: "Phil Bowsher"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a POC of using the tiered Approach to assess ADA	positive samples for immunogenicity analysis"
+params:
+  screening_cut_point: 200
+  confirmatory_cut_point: 20
+---
+
+# Prerequisites
+
+This is a _sample_ technical document written in **Markdown and R**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+
+This document will walk through the steps and procedues for assessing the immune response of a therapeutic protein when administered to patients by identifying positive samples through a three‐tiered testing strategy.
+
+_**Three‐tiered Testing Strategy**_
+
+Tiered approach for immunogenicity sample analysis will be outlined. First, the screen assay is used to determine whether samples are positive or negative for the presence of ADA, then followed by a confirmatory analysis utilizing the percent signal inhibition, then further characterization such as ADA titer is reported with positive samples and further drug-neutralizing potential is investigated.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

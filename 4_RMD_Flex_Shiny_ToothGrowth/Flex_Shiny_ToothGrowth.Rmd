@@ -1,0 +1,65 @@
+---
+title: "ToothGrowth Analysis Shiny"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(shiny)
+# load data in 'global' chunk so it can be shared by all users of the dashboard
+library(datasets)
+library(dplyr)
+data(ToothGrowth)
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r}
+selectInput(inputId = "supplement", label = "Supplement", 
+                                      choices = c("Orange Juice" = "OJ", "Ascorbic Acid" = "VC", "Compare"))
+
+selectInput(inputId = "dosage", label = "Dosage", choices = c(0.5, 1.0, 2.0, "Compare"))
+```
+
+
+Column
+-----------------------------------------------------------------------
+
+### Candlestick chart
+
+```{r}
+
+selectedData <- reactive({
+    df <- if(input$supplement != "Compare") {
+      ToothGrowth[ToothGrowth$supp == input$supplement, ]
+    }
+    else {
+    ToothGrowth[ToothGrowth$supp == ToothGrowth$supp, ]
+    }
+  
+  df <- data.frame(df)
+}
+)
+
+renderPlot({
+      
+    eda <- ggplot(selectedData(), aes(x = supp, y = len)) + 
+      geom_boxplot(aes(fill = supp)) + 
+      geom_jitter() +
+      ggtitle("Boxplot of Supplement and Dosage vs. Tooth Length") +
+      xlab("Supplement") + ylab("Tooth Length")
+      
+    if(input$dosage == "Compare") {
+      eda <- eda + facet_grid(~dose)
+    }
+      
+    print(eda)
+  })
+
+```

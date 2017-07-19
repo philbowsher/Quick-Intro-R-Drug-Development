@@ -1,0 +1,40 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+params:
+  symbol: IBM
+---
+
+## `r params$symbol`
+
+```{r, echo=FALSE, message=FALSE}
+
+library(quantmod)
+
+prices <- round(getSymbols(params$symbol, auto.assign = FALSE, src = 'google'), 2)
+close <- Cl(last(prices))
+open <- Op(last(prices))
+```
+
+The stock closed `r ifelse(open>close,'up','down')` at `r close` dollars per share yesterday ... hey this Phil 3/21/2017 Have a great day!!!
+
+## Price History
+
+The chart below is made with the `quantmod` R package, a widely used package for collecting and visualizing financial data in R. You can learn more about `quantmod` at the website this is my report
+***
+  
+```{r echo=FALSE}
+chartSeries(prices, theme = chartTheme("white", bg.col = "white"))
+```
+
+## Raw Data
+
+The table below displays the daily price data for the stock. In the next section, we will learn how to make a concise, interactive table with the `DT` package, a new package for making searchable data tables. You can learn more about the `DT` package at the website 
+***
+  
+```{r echo=FALSE}
+DT::datatable(data.frame(prices[, 1:4], 2))
+```
+

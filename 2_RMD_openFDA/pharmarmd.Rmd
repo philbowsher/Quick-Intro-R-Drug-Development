@@ -1,0 +1,200 @@
+---
+output: html_document
+params:
+  symbol: 'PREDNISONE'
+---
+
+## Adverse Events for `r params$symbol` Report - This report is for testing and informational purposes only.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+# ETANERCEPT ADALIMUMAB ASPIRIN METHOTREXATE FUROSEMIDE NATALIZUMAB SIMVASTATIN LISINOPRIL PREDNISONE
+
+library("openfda")
+
+outcome_f2 = fda_query("/drug/event.json") %>%
+       fda_filter("patient.drug.openfda.generic_name.exact", params$symbol) %>%
+       fda_filter("patient.drug.drugindication.exact", "%22SYSTEMIC+LUPUS+ERYTHEMATOSUS%22") %>%
+       fda_count("patient.reaction.reactionmeddrapt.exact") %>%
+       fda_limit(10)%>%
+       fda_exec()
+```
+
+Top 10 most frequent adverse events for people taking `r params$symbol` with drug indication of Lupus are:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(gridExtra)
+grid.table(outcome_f2)
+
+#<br>
+#names(outcome_f2)
+#outcome_f2[1,]
+#r outcome_f2[2,]
+#r outcome_f2[3,]
+#r outcome_f2[4,]
+#r outcome_f2[5,]
+#r outcome_f2[6,]
+#r outcome_f2[7,]
+#r outcome_f2[8,]
+#r outcome_f2[9,]
+#r outcome_f2[10,]
+
+# DT::datatable(data.frame(outcome_f2))
+
+```
+
+## Adverse Events Information
+
+The graph below displays the top 5 adverse events for 3 different drugs as reported 2004 to 2015 for women aged 50-60 with drug indication of Lupus.
+
+The chart below is made with the `ggplot2` and `plotly` R packages, widely used packages for graphics and visualizing data in R. You can learn more about `ggplot2` and `plotly` at each packages website. Data are extracted from the OpenFDA API using the `openfda` R package. You can read more via the github page.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+library("ggplot2")
+library("plotly")
+library("openfda")
+library("plyr")
+
+my_query = fda_query("/drug/event.json")
+
+agesm = ldply(c(params$symbol, 'Hydroxychloroquine', 'Azathioprine'), function(drug) {
+
+  dfm = my_query %>%
+  fda_filter("patient.patientsex","2") %>%
+  fda_filter("patient.drug.openfda.generic_name", drug) %>%
+  fda_filter("receivedate", "[20040101+TO+20160101]") %>%
+  fda_filter("patient.drug.drugindication", "%22SYSTEMIC+LUPUS+ERYTHEMATOSUS%22") %>%
+  fda_filter("patient.patientonsetage", "[50+TO+60]") %>%
+  fda_count("patient.reaction.reactionmeddrapt.exact") %>%
+  fda_limit(5)%>%
+    fda_exec()
+  dfm$drug = drug
+  dfm
+})
+
+```
+  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+p <- ggplot(data = agesm, aes(x = term, y = count, fill = drug)) + geom_bar(stat="identity", position=position_dodge()) + theme(axis.text = element_text(vjust = 0, angle = -15), legend.background = element_rect(fill = "gray96"))
+
+ggplotly(p)
+```
+
+## Raw Data
+
+In this section, we will learn how to make a concise, interactive table with the `DT` package, a new package for making searchable data tables. You can learn more about the `DT` package at the website 
+***
+  
+```{r echo=FALSE}
+DT::datatable(data.frame(agesm))
+```
+
+## Male / Female Outcomes Information for `r params$symbol` Report
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+library(reshape2)
+library(plyr)
+library(ggplot2)
+library(plotly)
+library(openfda)
+#Following code was used to extract data from FDA's API and to create a bar chart of event count by outcome
+##Retrieve outcome event count(Male) data 
+outcome_m = fda_query("/drug/event.json") %>%
+  fda_filter("patient.patientsex","1") %>%
+  fda_filter("patient.drug.openfda.generic_name.exact", params$symbol) %>%
+  fda_filter("patient.patientonsetage", "[50+TO+60]") %>%
+  fda_filter("receivedate", "[20040101+TO+20160101]") %>%
+  fda_count("patient.reaction.reactionoutcome") %>%
+  fda_limit(1000)%>%
+  fda_exec()
+
+
+##Retrieve outcome event count(Female) data 
+outcome_f = fda_query("/drug/event.json") %>%
+  fda_filter("patient.patientsex","2") %>%
+  fda_filter("patient.drug.openfda.generic_name.exact", params$symbol) %>%
+  fda_filter("patient.patientonsetage", "[50+TO+60]") %>%
+  fda_filter("receivedate", "[20040101+TO+20160101]") %>%
+  fda_count("patient.reaction.reactionoutcome") %>%
+  fda_limit(1000)%>%
+  fda_exec()
+
+##Retrieve outcome event count(Gender unknown) data
+outcome_u = fda_query("/drug/event.json") %>%
+  fda_filter("patient.patientsex","0") %>%
+  fda_filter("patient.drug.openfda.generic_name.exact", params$symbol) %>%
+  fda_filter("patient.patientonsetage", "[50+TO+60]") %>%
+  fda_filter("receivedate", "[20040101+TO+20160101]") %>%
+  fda_count("patient.reaction.reactionoutcome") %>%
+  fda_limit(1000)%>%
+  fda_exec()
+
+##Retrieve outcome event count(Total) data
+outcome = fda_query("/drug/event.json") %>%
+  fda_filter("patient.drug.openfda.generic_name.exact", params$symbol) %>%
+  fda_filter("patient.patientonsetage", "[50+TO+60]") %>%
+  fda_filter("receivedate", "[20040101+TO+20160101]") %>%
+  fda_count("patient.reaction.reactionoutcome") %>%
+  fda_limit(1000)%>%
+  fda_exec()
+
+#Merge male and female event count by outcome 
+Merge_m_f<- merge(x = outcome_m, y = outcome_f, by = "term", all = TRUE)
+
+Merge_m_f_u<- merge(x = Merge_m_f, y = outcome_u, by = "term", all = TRUE)
+
+Merge_m_f_u_t<- merge(x = Merge_m_f_u, y = outcome, by = "term", all = TRUE)
+
+#Change column names
+colnames(Merge_m_f_u_t)<- c("Outcome", "Male","Female", "Unknown")
+                            
+#Check total 
+Merge_m_f_u_t$Sum <- Merge_m_f_u_t$Male + Merge_m_f_u_t$Female + Merge_m_f_u_t$Unknown
+#->Some record is missing gender label
+
+#Change column names
+colnames(Merge_m_f_u_t)<- c("Outcome", "Male","Female", "Unknown", "Total_Event_Count","Sum")
+
+Merge_m_f_u_t2 = subset(Merge_m_f_u_t, select = c(-Unknown,-Total_Event_Count,-Sum))
+
+Merge_m_f_u_t2$Outcome <- mapvalues(Merge_m_f_u_t2$Outcome,
+                            from = c(1,2,3, 4, 5, 6),
+                            to = c("Recovered/resolved", "Recovering/resolving", "Not recovered/not resolved" , "Recovered/resolved with sequelae" , "Fatal", "Unknown"))
+
+Merge_m_f_u_t.long<-melt(Merge_m_f_u_t2)
+
+#Export as csv file
+#library(xlsx)
+#write.xlsx(Merge_f_m_u_t, "Merge_f_m_u_t.xlsx") 
+
+
+```
+
+The graph below displays the outcome of the reaction or event at the time of last observation for reports that were first received 2004 - 2015 and for 50-60 years of age and by sex for `r params$symbol`. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##[Plotting the average values for each level in ggplot2]##
+p2 = ggplot(Merge_m_f_u_t.long,aes(Outcome,value,fill=variable))+
+      geom_bar(stat="identity",position="dodge") + theme(axis.text = element_text(vjust = 0, angle = -15), legend.background = element_rect(fill = "gray96"))
+
+ggplotly(p2)
+```
+```{r}
+sessionInfo()
+```
+
+```{r}
+devtools::session_info() 
+```
+
+As found here: https://open.fda.gov/drug/event/ and here: https://open.fda.gov/drug/event/reference/
+
+Responsible use of the data
+
+openFDA is in beta and is a beta research project and not for clinical use. 
+
+Adverse event reports submitted to FDA do not undergo extensive validation or verification. Therefore, a causal relationship cannot be established between product and reactions listed in a report. While a suspected relationship may exist, it is not medically validated and should not be the sole source of information for clinical decision making or other assumptions about the safety or efficacy of a product.
+
+Additionally, it is important to remember that adverse event reports represent a small percentage of total usage numbers of a product. Common products may have a higher number of adverse events due to the higher total number of people using the product. In recent years the FDA has undertaken efforts to increase collection of adverse events. Increases in the total number of adverse events is likely caused by improved reporting.
