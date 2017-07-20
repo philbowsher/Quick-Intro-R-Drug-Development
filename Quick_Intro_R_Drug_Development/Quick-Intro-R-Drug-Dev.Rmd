@@ -278,6 +278,13 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
 
 </div>
 
+## Platforms & Tools
+- [mrgsolve facilitates simulation in R from hierarchical, ordinary differential equation (ODE)-based models typically employed in drug development](https://www.metrumrg.com/try-open-source-tools/)
+- [Shares information about ITN's clinical studies and specimen bio-repository](https://www.itntrialshare.org/)
+- [Bio3D-web is a new online application for the user friendly investigation of protein structure ensembles](http://129.177.232.111:3848/pca-app/?SSUID=2017-07-20_369c3a8b40e0)
+- [Software, databases and learning material maintained by bioinformatics platform members](http://bioinformatics.mdc-berlin.de/resources.html)
+- [Environment for medical and genomic research](https://www.synapse.org/)
+
 ## Applications in Research - Github
 - https://github.com/rstudio/shiny_example
 - https://shiny.rstudio.com/articles/deployment-local.html
@@ -298,6 +305,7 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
 ## Pharmacokinetics
 
  - [Interactive Pharmacometric Applications Using R and the Shiny Package](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4394611/)
+ - [Simple example of modeling and postprocessing a bayesian dataset with nonmem](http://devinpastoor.com/simplest_bayes/bayesian-analysis.html)
 - [Bioequivalence v0.3 by Andrey Ogurtsov](https://statist.shinyapps.io/bioeq_en/)
 - [Pharmacometrics: some Shiny applications](http://webpopix.org/shiny/ShinyExamples.html)
  - [Glucose Insulin Dynamics and SGLT 1/2 inhibition](http://qsp.engr.uga.edu:3838/GluIns/GluIns1.d/)
@@ -321,10 +329,12 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
 - http://schedule.user2016.org/event/7BXX/mavis-meta-analysis-via-shiny
 - http://kylehamilton.net/shiny/MAVIS/
 - https://aurora.shinyapps.io/random_gen/
+- https://cran.r-project.org/web/views/ClinicalTrials.html
  
  
 ## Genomics & Proteomics
 
+  - [Human eyeIntegration web app](https://eyeintegration.nei.nih.gov/)
   - [Gene Expression Biclustering - Bryan Lewis](https://jjallaire.shinyapps.io/shiny-biclust/)
   - [Visualize and explore an entire genome](https://gallery.shinyapps.io/genome_browser/)
   - [Use phenotypes and genotypes to detect novel disease gene candidates ](http://omimexplorer.research.bcm.edu:3838/omim_explorer/)
@@ -346,6 +356,9 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
  - [Influenza types from global surveillance isolates](https://pmacp.shinyapps.io/Influenza_isolates/)
  - [Impact of HIV Pre-Exposure Prophylaxis among MSM in the United States](https://prism.shinyapps.io/cdc-prep-guidelines/)
  - [Bacterial Growth Curve Analysis](https://mdphan.shinyapps.io/GrowthCurvesAnalysis/)
+ - [CDC Zika Data](https://chendaniely.shinyapps.io/zika_cdc_dashboard/)
+ - [Health & economic impact, achieving the WHO targets
+for control and elimination of London Declaration NTDs](https://erasmusmcmgz.shinyapps.io/dissemination/)
 
 ## Hospital/Medicine
 
@@ -358,6 +371,7 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
 - [Hospital Infections ](https://hospinf.shinyapps.io/hospinf/)
 - [Comparing Scores from Different Patient Reported Outcomes using Item Response Theory ](http://www.common-metrics.org/app.php)
 - [Advanced analysis of your DNA](http://www.impute.me/)
+- [2014 WHO Growth Charts for Canada, 2-19 years](http://apps.cpeg-gcep.net/growth219_DDE/)
 
 # Part 1 R Markdown
 
@@ -402,6 +416,8 @@ by Kazuki Yoshida
 - [A not so short review on 
 survival analysis in R](http://rpubs.com/alecri/258589)
 - [Access to Hospital Care Dashboard](http://colorado.rstudio.com/rsc/content/154/)
+- [Comparative Protein Structure Analysis with Bio3D](http://rpubs.com/xqyao/bio3d_pca)
+- [Survival Analysis Example](https://rpubs.com/mjeagle/Surv)
 
 <div class="img-col">![Rmarkdownpackage](Rmarkdownpackage.png)
  </div>
