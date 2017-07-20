@@ -764,6 +764,11 @@ Shiny Server is a server program that lets you host and manage shiny web applica
  - https://bookdown.org/yihui/bookdown
  - 6_RMD_Immunogenicity_Bookdown
  - In Build - click Build Book
+ 
+## Notebooks
+
+ - http://rmarkdown.rstudio.com/r_notebooks.html#overview
+ - 7_RMD_Immunogenicity_Notebook
 
 # Part 2 HTML Widgets
 
